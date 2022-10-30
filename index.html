@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="./s2/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-  <title>Preserving background sound in voice conversion via multi-task learning</title>
+  <title>Preserving Background Sound in Noise-robust Voice Conversion via Multi-task Learning</title>
   <style type="text/css">
     table {
       width: 100%;
@@ -240,17 +240,17 @@
         <div class="row align-items-center">
           <div class="col-md-12">
             <h1><a class="text-light">
-                Preserving background sound in voice conversion <br>
-                via multi-task learning</a></h1>
+              Preserving Background Sound in Noise-robust Voice Conversion
+              via Multi-task Learning</a></h1>
             <p>
             </p>
             <div class="row">
-              <div class="col-md col-sm-12"><a class="text-light">Jixun Yao, Yi Lei, Qing Wang, Pengcheng Guo, Ziqian
-                  Ning, Lei Xie</a> </div>
+              <div class="col-md col-sm-12"><a class="text-light">Jixun Yao, Yi Lei, Qing Wang, Pengcheng Guo, Ziqian Ning, Lei Xie, Hai Li, Junhui Liu, Danming Xie</a> </div>
             </div>
             <p></p>
             <p><a class="text-light">Audio, Speech and Language Processing Group (ASLP@NPU) <br>
-                School of Computer Science, Northwestern Polytechnical University, Xi’an, China
+                School of Computer Science, Northwestern Polytechnical University, Xi’an, China <br>
+                iQIYI Inc, China
               </a></p>
 
           </div>
@@ -264,23 +264,10 @@
     <div class="container">
       <div class="row" id="intro">
         <div class="col">
-          <p>This page shows the samples in the paper "<b>Preserving background sound in voice conversion via multi-task
-              learning</b>".
+          <p>This page shows the samples in the paper "<b>Preserving Background Sound in Noise-robust Voice Conversion via Multi-task Learning</b>".
           <h2>Abstract</h2>
           <div>
-            Background sound or music is an informative form of art that is critical to provide a more immersive
-            experience in real-application voice conversion (VC) scenarios
-            However, prior research about VC, mainly focusing on clean voices, pay rare attention to VC with background
-            sound. The challenge for preserving background sound in VC is the separation results from the source
-            waveform. The inferior separation results are more likely to bring about performance degradation. In this
-            paper, we propose an end-to-end framework via multi-task learning to disentangle and recompose the
-            background sound and vocals. This framework consists of a speech enhancement module and a voice conversion
-            module. The proposed framework leverages multi-task learning strategy to conduct voice conversion in the
-            presence of background sound. The primary task is to share a uniform reconstruction loss of voices with
-            background sound constraint by joint training. The secondary and tertiary task employs the original loss of
-            each module to avoid the degradation of the intermediate output due to joint optimization. The experimental
-            results demonstrate that our proposed framework significantly outperforms the baseline systems while
-            achieving comparable quality and speaker similarity to the VC models trained with clean data.
+            Background sound is an informative form of art that is helpful in providing a more immersive experience in real-application voice conversion (VC) scenarios. However, prior research about VC, mainly focusing on clean voices, pay rare attention to VC with background sound. The critical problem for preserving background sound in VC is inevitable speech distortion by the neural separation model and the cascade mismatch between the source separation model and the VC model. In this paper, we propose an end-to-end framework via multi-task learning which sequentially cascades a source separation (SS) module, a bottleneck feature extraction module and a VC module. Specifically, the source separation task explicitly considers critical phase information and confines the distortion caused by the imperfect separation process. The source separation task, the typical VC task and the unified task shares a uniform reconstruction loss constrained by joint training to reduce the mismatch between the SS and VC modules. Experimental results demonstrate that our proposed framework significantly outperforms the baseline systems while achieving comparable quality and speaker similarity to the VC models trained with clean data.
             </p>
           </div>
         </div>
@@ -291,9 +278,7 @@
           <h2>Proposed Multi-task Framework</h2>
           <div>
             <img src="./s2/model.drawio.png" width="100%">
-            Fig.1. (a) System overview of proposed multi-task framework. (b) SE module. (c) VC module. The solid line
-            represents the forward propagation, and the dashed line represents which loss functions are used for the
-            module output.
+            Fig.1. (a) System overview of the proposed multi-task framework, BN represents bottleneck features. (b) SS module. (c) VC module. The solid line represents the forward propagation, and the dashed line represents which loss functions are used for the module output.
           </div>
         </div>
       </div>
@@ -310,8 +295,8 @@
             
             <tr>
               <th scope="row">Target speaker</th>
-              <th scope="row">p225</th>
-              <th scope="row">p225</th>
+              <th scope="row">p294</th>
+              <th scope="row">p334</th>
               
             </tr>
             <tbody>
@@ -319,12 +304,12 @@
               <td></td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-org/slt/arctic_b0409_ref.wav" type="audio/wav">
+                  <source src="./audios/ensemble/target/p294_025.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-org/slt/arctic_b0409_ref.wav" type="audio/wav">
+                  <source src="./audios/ensemble/target/p334_061.wav" type="audio/wav">
                 </audio>
               </td>
             </tbody>
@@ -351,58 +336,85 @@
               <th scope="row">F2F</th>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-org/slt/arctic_b0409_ref.wav" type="audio/wav">
+                  <source src="./audios/ensemble/source/p264_004.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-WORLD/slt/arctic_b0409_ref.wav" type="audio/wav">
+                  <source src="./audios/ensemble/b1/p264_004.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-WaveNet/slt/arctic_b0409_gen.wav" type="audio/wav">
+                  <source src="./audios/ensemble/b2/p264_004.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-WaveGAN/slt/slt_arctic_b0409_gen.wav" type="audio/wav">
+                  <source src="./audios/ensemble/proposed/p264_004.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-WaveGAN/slt/slt_arctic_b0409_gen.wav" type="audio/wav">
+                  <source src="./audios/ensemble/ub/p264_004.wav" type="audio/wav">
                 </audio>
               </td>
             </tr>
 
-
+            <tr>
+              <th scope="row">M2F</th>
+              <td>
+                <audio controls="">
+                  <source src="./audios/ensemble/source/p245_009.wav" type="audio/wav">
+                </audio>
+              </td>
+              <td>
+                <audio controls="">
+                  <source src="./audios/ensemble/b1/p245_009.wav" type="audio/wav">
+                </audio>
+              </td>
+              <td>
+                <audio controls="">
+                  <source src="./audios/ensemble/b2/p245_009.wav" type="audio/wav">
+                </audio>
+              </td>
+              <td>
+                <audio controls="">
+                  <source src="./audios/ensemble/proposed/p245_009.wav" type="audio/wav">
+                </audio>
+              </td>
+              <td>
+                <audio controls="">
+                  <source src="./audios/ensemble/ub/p245_009.wav" type="audio/wav">
+                </audio>
+              </td>
+            </tr>
 
             <tr>
               <th scope="row">F2M</th>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-org/slt/arctic_b0411_ref.wav" type="audio/wav">
+                  <source src="./audios/ensemble/source/p361_006.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-WORLD/slt/arctic_b0411_ref.wav" type="audio/wav">
+                  <source src="./audios/ensemble/b1/p361_006.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-WaveNet/slt/arctic_b0411_gen.wav" type="audio/wav">
+                  <source src="./audios/ensemble/b2/p361_006.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-WaveGAN/slt/slt_arctic_b0411_gen.wav" type="audio/wav">
+                  <source src="./audios/ensemble/proposed/p361_006.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-WaveGAN/slt/slt_arctic_b0409_gen.wav" type="audio/wav">
+                  <source src="./audios/ensemble/ub/p361_006.wav" type="audio/wav">
                 </audio>
               </td>
             </tr>
@@ -412,59 +424,59 @@
               <th scope="row">M2M</th>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-org/slt/arctic_b0413_ref.wav" type="audio/wav">
+                  <source src="./audios/ensemble/source/p270_009.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-WORLD/slt/arctic_b0413_ref.wav" type="audio/wav">
+                  <source src="./audios/ensemble/b1/p270_009.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-WaveNet/slt/arctic_b0413_gen.wav" type="audio/wav">
+                  <source src="./audios/ensemble/b2/p270_009.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-WaveGAN/slt/slt_arctic_b0413_gen.wav" type="audio/wav">
+                  <source src="./audios/ensemble/proposed/p270_009.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-WaveGAN/slt/slt_arctic_b0409_gen.wav" type="audio/wav">
+                  <source src="./audios/ensemble/ub/p270_009.wav" type="audio/wav">
                 </audio>
               </td>
             </tr>
 
-            <tr>
+            <!-- <tr>
               <th scope="row">M2F</th>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-org/bdl/arctic_b0409_ref.wav" type="audio/wav">
+                  <source src="./audios/ensemble/source/p245_009.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-WORLD/bdl/arctic_b0409_ref.wav" type="audio/wav">
+                  <source src="./audios/ensemble/b1/p245_009.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-WaveNet/bdl/arctic_b0409_gen.wav" type="audio/wav">
+                  <source src="./audios/ensemble/b2/p245_009.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-WaveGAN/bdl/bdl_arctic_b0409_gen.wav" type="audio/wav">
+                  <source src="./audios/ensemble/proposed/p245_009.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-WaveGAN/slt/slt_arctic_b0409_gen.wav" type="audio/wav">
+                  <source src="./audios/ensemble/ub/p245_009.wav" type="audio/wav">
                 </audio>
               </td>
-            </tr>
+            </tr> -->
 
           </tbody>
         </table>
@@ -479,8 +491,8 @@
             
             <tr>
               <th scope="row">Target speaker</th>
-              <th scope="row">p225</th>
-              <th scope="row">p225</th>
+              <th scope="row">p294</th>
+              <th scope="row">p334</th>
               
             </tr>
             <tbody>
@@ -488,12 +500,12 @@
               <td></td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-org/slt/arctic_b0409_ref.wav" type="audio/wav">
+                  <source src="./audios/speech/target/p294_055.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-org/slt/arctic_b0409_ref.wav" type="audio/wav">
+                  <source src="./audios/speech/target/p334_048.wav" type="audio/wav">
                 </audio>
               </td>
             </tbody>
@@ -511,7 +523,7 @@
               <th>Baseline1 (Sep)</th>
               <th>Baseline2 (Sep + Denoise)</th>
               <th>Proposed</th>
-              <th>Upper Bound</th>
+              <!-- <th>Upper Bound</th> -->
             </tr>
           </thead>
           <tbody>
@@ -520,119 +532,118 @@
               <th scope="row">F2F</th>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-org/slt/arctic_b0409_ref.wav" type="audio/wav">
+                  <source src="./audios/speech/source/p361_005.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-WORLD/slt/arctic_b0409_ref.wav" type="audio/wav">
+                  <source src="./audios/speech/b1/p361_005.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-WaveNet/slt/arctic_b0409_gen.wav" type="audio/wav">
+                  <source src="./audios/speech/b2/p361_005.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-WaveGAN/slt/slt_arctic_b0409_gen.wav" type="audio/wav">
+                  <source src="./audios/speech/proposed/p361_005.wav" type="audio/wav">
                 </audio>
               </td>
-              <td>
-                <audio controls="">
-                  <source src="./my/A1-WaveGAN/slt/slt_arctic_b0409_gen.wav" type="audio/wav">
-                </audio>
-              </td>
-            </tr>
-
-
-
-            <tr>
-              <th scope="row">F2M</th>
-              <td>
-                <audio controls="">
-                  <source src="./my/A1-org/slt/arctic_b0411_ref.wav" type="audio/wav">
-                </audio>
-              </td>
-              <td>
-                <audio controls="">
-                  <source src="./my/A1-WORLD/slt/arctic_b0411_ref.wav" type="audio/wav">
-                </audio>
-              </td>
-              <td>
-                <audio controls="">
-                  <source src="./my/A1-WaveNet/slt/arctic_b0411_gen.wav" type="audio/wav">
-                </audio>
-              </td>
-              <td>
-                <audio controls="">
-                  <source src="./my/A1-WaveGAN/slt/slt_arctic_b0411_gen.wav" type="audio/wav">
-                </audio>
-              </td>
-              <td>
+              <!-- <td>
                 <audio controls="">
                   <source src="./my/A1-WaveGAN/slt/slt_arctic_b0409_gen.wav" type="audio/wav">
                 </audio>
-              </td>
-            </tr>
-
-
-            <tr>
-              <th scope="row">M2M</th>
-              <td>
-                <audio controls="">
-                  <source src="./my/A1-org/slt/arctic_b0413_ref.wav" type="audio/wav">
-                </audio>
-              </td>
-              <td>
-                <audio controls="">
-                  <source src="./my/A1-WORLD/slt/arctic_b0413_ref.wav" type="audio/wav">
-                </audio>
-              </td>
-              <td>
-                <audio controls="">
-                  <source src="./my/A1-WaveNet/slt/arctic_b0413_gen.wav" type="audio/wav">
-                </audio>
-              </td>
-              <td>
-                <audio controls="">
-                  <source src="./my/A1-WaveGAN/slt/slt_arctic_b0413_gen.wav" type="audio/wav">
-                </audio>
-              </td>
-              <td>
-                <audio controls="">
-                  <source src="./my/A1-WaveGAN/slt/slt_arctic_b0409_gen.wav" type="audio/wav">
-                </audio>
-              </td>
+              </td> -->
             </tr>
 
             <tr>
               <th scope="row">M2F</th>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-org/bdl/arctic_b0409_ref.wav" type="audio/wav">
+                  <source src="./audios/speech/source/p245_002.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-WORLD/bdl/arctic_b0409_ref.wav" type="audio/wav">
+                  <source src="./audios/speech/b1/p245_002.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-WaveNet/bdl/arctic_b0409_gen.wav" type="audio/wav">
+                  <source src="./audios/speech/b2/p245_002.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-WaveGAN/bdl/bdl_arctic_b0409_gen.wav" type="audio/wav">
+                  <source src="./audios/speech/proposed/p245_002.wav" type="audio/wav">
                 </audio>
               </td>
-              <td>
+              <!-- <td>
                 <audio controls="">
                   <source src="./my/A1-WaveGAN/slt/slt_arctic_b0409_gen.wav" type="audio/wav">
                 </audio>
+              </td> -->
+            </tr>
+
+            <tr>
+              <th scope="row">F2M</th>
+              <td>
+                <audio controls="">
+                  <source src="./audios/speech/source/p264_007.wav" type="audio/wav">
+                </audio>
               </td>
+              <td>
+                <audio controls="">
+                  <source src="./audios/speech/b1/p264_007.wav" type="audio/wav">
+                </audio>
+              </td>
+              <td>
+                <audio controls="">
+                  <source src="./audios/speech/b2/p264_007.wav" type="audio/wav">
+                </audio>
+              </td>
+              <td>
+                <audio controls="">
+                  <source src="./audios/speech/proposed/p264_007.wav" type="audio/wav">
+                </audio>
+              </td>
+              <!-- <td>
+                <audio controls="">
+                  <source src="./my/A1-WaveGAN/slt/slt_arctic_b0409_gen.wav" type="audio/wav">
+                </audio>
+              </td> -->
+            </tr>
+
+
+            <tr>
+              <th scope="row">M2M</th>
+              <td>
+
+                <audio controls="">
+                  <source src="./audios/speech/source/p270_003.wav" type="audio/wav">
+                </audio>
+              </td>
+              <td>
+                <audio controls="">
+                  <source src="./audios/speech/b1/p270_003.wav" type="audio/wav">
+                </audio>
+              </td>
+              <td>
+                <audio controls="">
+                  <source src="./audios/speech/b2/p270_003.wav" type="audio/wav">
+                </audio>
+              </td>
+              <td>
+                <audio controls="">
+                  <source src="./audios/speech/proposed/p270_003.wav" type="audio/wav">
+                </audio>
+              </td>
+              <!-- <td>
+                <audio controls="">
+                  <source src="./my/A1-WaveGAN/slt/slt_arctic_b0409_gen.wav" type="audio/wav">
+                </audio>
+              </td> -->
             </tr>
 
           </tbody>
@@ -649,9 +660,9 @@
             <tr>
               <th></th>
               <th>Proposed</th>
+              <th>Without SE Loss</th>
+              <th>Without VC Loss</th>
               <th>Without Joint Training</th>
-              <th>Without Secondary Loss</th>
-              <th>Without Tertiary Loss</th>
             </tr>
           </thead>
           <tbody>
@@ -660,22 +671,22 @@
               <th scope="row">Sample 1</th>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-NDPS-B/slt/slt_arctic_b0409-feats_gen.wav" type="audio/wav">
+                  <source src="./audios/ablation/proposed/p245_001.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/B1-NSF/slt_arctic_b0409_gen.wav" type="audio/wav">
+                  <source src="./audios/ablation/nobgm/p245_001.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-NDPS-MBE/slt/slt_arctic_b0409-feats_gen.wav" type="audio/wav">
+                  <source src="./audios/ablation/novc/p245_001.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-NDPS-MBE/slt/slt_arctic_b0409-feats_gen.wav" type="audio/wav">
+                  <source src="./audios/ablation/nounion/p245_001.wav" type="audio/wav">
                 </audio>
               </td>
             </tr>
@@ -684,22 +695,22 @@
               <th scope="row">Sample 2</th>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-NDPS-B/slt/slt_arctic_b0411-feats_gen.wav" type="audio/wav">
+                  <source src="./audios/ablation/proposed/p245_002.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/B1-NSF/slt_arctic_b0411_gen.wav" type="audio/wav">
+                  <source src="./audios/ablation/nobgm/p245_002.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-NDPS-MBE/slt/slt_arctic_b0411-feats_gen.wav" type="audio/wav">
+                  <source src="./audios/ablation/novc/p245_002.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-NDPS-MBE/slt/slt_arctic_b0409-feats_gen.wav" type="audio/wav">
+                  <source src="./audios/ablation/nounion/p245_002.wav" type="audio/wav">
                 </audio>
               </td>
             </tr>
@@ -708,22 +719,22 @@
               <th scope="row">Sample 3</th>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-NDPS-B/slt/slt_arctic_b0413-feats_gen.wav" type="audio/wav">
+                  <source src="./audios/ablation/proposed/p270_001.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/B1-NSF/slt_arctic_b0413_gen.wav" type="audio/wav">
+                  <source src="./audios/ablation/nobgm/p270_001.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-NDPS-MBE/slt/slt_arctic_b0413-feats_gen.wav" type="audio/wav">
+                  <source src="./audios/ablation/novc/p270_001.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-NDPS-MBE/slt/slt_arctic_b0409-feats_gen.wav" type="audio/wav">
+                  <source src="./audios/ablation/nounion/p270_001.wav" type="audio/wav">
                 </audio>
               </td>
             </tr>
@@ -731,22 +742,22 @@
               <th scope="row">Sample 4</th>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-NDPS-B/slt/slt_arctic_b0413-feats_gen.wav" type="audio/wav">
+                  <source src="./audios/ablation/proposed/p270_004.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/B1-NSF/slt_arctic_b0413_gen.wav" type="audio/wav">
+                  <source src="./audios/ablation/nobgm/p270_004.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-NDPS-MBE/slt/slt_arctic_b0413-feats_gen.wav" type="audio/wav">
+                  <source src="./audios/ablation/novc/p270_004.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-NDPS-MBE/slt/slt_arctic_b0409-feats_gen.wav" type="audio/wav">
+                  <source src="./audios/ablation/nounion/p270_004.wav" type="audio/wav">
                 </audio>
               </td>
             </tr>
@@ -785,22 +796,22 @@
               <th scope="row">Sample 1</th>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-NDPS-B/slt/slt_arctic_b0409-feats_gen.wav" type="audio/wav">
+                  <source src="./audios/control/a/p245_001.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/B1-NSF/slt_arctic_b0409_gen.wav" type="audio/wav">
+                  <source src="./audios/control/b/p245_007.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-NDPS-MBE/slt/slt_arctic_b0409-feats_gen.wav" type="audio/wav">
+                  <source src="./audios/speech/target/p294_025.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-NDPS-MBE/slt/slt_arctic_b0409-feats_gen.wav" type="audio/wav">
+                  <source src="./audios/control/result/p245_001-007-p294.wav" type="audio/wav">
                 </audio>
               </td>
             </tr>
@@ -809,22 +820,22 @@
               <th scope="row">Sample 2</th>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-NDPS-B/slt/slt_arctic_b0411-feats_gen.wav" type="audio/wav">
+                  <source src="./audios/control/a/p361_002.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/B1-NSF/slt_arctic_b0411_gen.wav" type="audio/wav">
+                  <source src="./audios/control/b/p361_004.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-NDPS-MBE/slt/slt_arctic_b0411-feats_gen.wav" type="audio/wav">
+                  <source src="./audios/speech/target/p294_025.wav" type="audio/wav">
                 </audio>
               </td>
               <td>
                 <audio controls="">
-                  <source src="./my/A1-NDPS-MBE/slt/slt_arctic_b0409-feats_gen.wav" type="audio/wav">
+                  <source src="./audios/control/result/p361_004-002-p334.wav" type="audio/wav">
                 </audio>
               </td>
             </tr>
